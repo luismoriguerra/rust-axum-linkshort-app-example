@@ -1,0 +1,25 @@
+
+cargo init --bin
+
+cargo add tokio axum tracing tracing-subscriber -F tokio/full -F tracing-subscriber/env-filter 
+
+
+cargo add metrics metrics-exporter-prometheus axum-prometheus tower tower_http -F tower_http/trace
+
+RUST_LOG=debug cargo run
+
+
+cargo add dotenv
+
+cargo add sqlx -F runtime-tokio-rustls -F postgres
+cargo install sqlx-cli --no-default-features --features postgres,native-tls
+
+
+
+cargo install dotenvy
+
+docker-compose up -d
+
+sqlx database create
+
+sqlx migrate add -r links
