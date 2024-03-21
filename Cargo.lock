@@ -897,6 +897,8 @@ dependencies = [
  "dotenv",
  "metrics",
  "metrics-exporter-prometheus 0.14.0",
+ "serde",
+ "serde_json",
  "sqlx",
  "tokio",
  "tower",

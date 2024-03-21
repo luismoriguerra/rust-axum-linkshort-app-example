@@ -9,7 +9,7 @@ cargo add metrics metrics-exporter-prometheus axum-prometheus tower tower_http -
 RUST_LOG=debug cargo run
 
 
-cargo add dotenv
+cargo add dotenvy
 
 cargo add sqlx -F runtime-tokio-rustls -F postgres
 cargo install sqlx-cli --no-default-features --features postgres,native-tls
@@ -23,3 +23,7 @@ docker-compose up -d
 sqlx database create
 
 sqlx migrate add -r links
+
+cargo add serde serde_json -F serde/derive
+
+
