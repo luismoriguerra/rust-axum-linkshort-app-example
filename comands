@@ -27,3 +27,4 @@ sqlx migrate add -r links
 cargo add serde serde_json -F serde/derive
 
 
+sqlx migrate run

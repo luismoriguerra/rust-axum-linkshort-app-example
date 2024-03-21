@@ -139,7 +139,7 @@ dependencies = [
  "http 1.1.0",
  "http-body 1.0.0",
  "matchit",
- "metrics",
+ "metrics 0.22.3",
  "metrics-exporter-prometheus 0.13.1",
  "once_cell",
  "pin-project",
@@ -895,7 +895,7 @@ dependencies = [
  "axum",
  "axum-prometheus",
  "dotenv",
- "metrics",
+ "metrics 0.21.1",
  "metrics-exporter-prometheus 0.14.0",
  "serde",
  "serde_json",
@@ -962,6 +962,17 @@ checksum = "523dc4f511e55ab87b694dc30d0f820d60906ef06413f93d4d7a1385599cc149"
 
 [[package]]
 name = "metrics"
+version = "0.21.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fde3af1a009ed76a778cb84fdef9e7dbbdf5775ae3e4cc1f434a6a307f6f76c5"
+dependencies = [
+ "ahash",
+ "metrics-macros",
+ "portable-atomic",
+]
+
+[[package]]
+name = "metrics"
 version = "0.22.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2be3cbd384d4e955b231c895ce10685e3d8260c5ccffae898c96c723b0772835"
@@ -980,7 +991,7 @@ dependencies = [
  "hyper 0.14.28",
  "indexmap",
  "ipnet",
- "metrics",
+ "metrics 0.22.3",
  "metrics-util",
  "quanta",
  "thiserror",
@@ -1000,12 +1011,23 @@ dependencies = [
  "hyper-util",
  "indexmap",
  "ipnet",
- "metrics",
+ "metrics 0.22.3",
  "metrics-util",
  "quanta",
  "thiserror",
  "tokio",
  "tracing",
+]
+
+[[package]]
+name = "metrics-macros"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "38b4faf00617defe497754acde3024865bc143d44a86799b24e191ecff91354f"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.53",
 ]
 
 [[package]]
@@ -1017,7 +1039,7 @@ dependencies = [
  "crossbeam-epoch",
  "crossbeam-utils",
  "hashbrown",
- "metrics",
+ "metrics 0.22.3",
  "num_cpus",
  "quanta",
  "sketches-ddsketch",

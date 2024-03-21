@@ -1,4 +1,5 @@
 mod routes;
+mod utils;
 
 use axum::routing::get;
 use axum::Router;
@@ -6,14 +7,15 @@ use sqlx::postgres::PgPoolOptions;
 use std::error::Error;
 
 use axum_prometheus::PrometheusMetricLayer;
+use dotenv::dotenv;
+use tower_http::trace::TraceLayer;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
-use tower_http::trace::TraceLayer;
-use dotenv::dotenv;
+
+use crate::routes::{health, redirect};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-
     dotenv().ok();
 
     tracing_subscriber::registry()
@@ -24,7 +26,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
-    let db_url= std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let db_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
     let db = PgPoolOptions::new()
         .max_connections(20)
@@ -34,8 +36,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let (prometheus_layer, metric_handle) = PrometheusMetricLayer::pair();
 
     let app = Router::new()
+        .route("/:id", get(redirect))
         .route("/metrics", get(|| async move { metric_handle.render() }))
-        .route("/health", get(routes::health))
+        .route("/health", get(health))
         .layer(TraceLayer::new_for_http())
         .layer(prometheus_layer)
         // set global state for the app

@@ -1,4 +1,3 @@
-
 use axum::http::StatusCode;
 use metrics::increment_counter;
 
@@ -12,5 +11,5 @@ where
 
     increment_counter!("request_error", &labels);
 
-    (StatusCode::INTERNAL_SERVER_ERROR, ERR.to_string())
+    (StatusCode::INTERNAL_SERVER_ERROR, err.to_string())
 }
