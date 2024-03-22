@@ -43,3 +43,4 @@ curl -XGET http://localhost:3000/MjQ2ODM0MTE5NQ -v
 https://youtu.be/9KkTd4eDUMY?si=PA4aBZcwu5r0rlg1&t=1983
 
 sqlx migrate add link_statistics
+
