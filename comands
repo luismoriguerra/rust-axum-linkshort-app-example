@@ -28,3 +28,11 @@ cargo add serde serde_json -F serde/derive
 
 
 sqlx migrate run
+
+RUST_LOG=debug cargo run
+
+curl -XPOST http://localhost:3000/create -d'{"targetUrl":"https://www.rust-lang.org/"}' -H 'Content-Type: application/json' -v 
+
+{"id":"MjQ2ODM0MTE5NQ","targetUrl":"https://www.rust-lang.org/"}%            
+
+curl -XGET http://localhost:3000/MjQ2ODM0MTE5NQ -v
