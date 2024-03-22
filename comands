@@ -36,3 +36,10 @@ curl -XPOST http://localhost:3000/create -d'{"targetUrl":"https://www.rust-lang.
 {"id":"MjQ2ODM0MTE5NQ","targetUrl":"https://www.rust-lang.org/"}%            
 
 curl -XGET http://localhost:3000/MjQ2ODM0MTE5NQ -v
+
+
+
+(1080) How to create your OWN Link Shortener in Rust (beginner-friendly project) - YouTube
+https://youtu.be/9KkTd4eDUMY?si=PA4aBZcwu5r0rlg1&t=1983
+
+sqlx migrate add link_statistics
